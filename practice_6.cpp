@@ -16,13 +16,13 @@ int searchValue(int array[], int size, int value) {
 }
 
 int main() {
-    int size = 30;
-    int array[size];
-    generateArrayData(array, size, true);
-    sort(array, array + size);
-    printArray(array, size);
-    cout << searchValue(array, size, 55);
+//    int size = 30;
+//    int array[size];
+//    generateArrayData(array, size, true);
+//    sort(array, array + size);
+//    printArray(array, size);
+//    cout << searchValue(array, size, 55);
 
-    WinRandom a;
+    cout << isPrime(23);
     return 0;
 }

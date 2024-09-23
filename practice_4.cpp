@@ -35,7 +35,8 @@ void bubblingSort(int array[], int size) {
 
 // 插入排序
 void insertSort(int array[], int size) {
-    for (int i = 1, j, insertValue; i < size; ++i) {
+    int j, insertValue;
+    for (int i = 1; i < size; ++i) {
         for (insertValue = array[i], j = i - 1; j >= 0 && array[j] > insertValue; j--) {
             array[j + 1] = array[j];
         }
@@ -58,5 +59,8 @@ int main() {
     // 插入排序
     insertSort(array, size);
     printArray(array, size);
+
+    sort(array, array + size);
+
     return 0;
 }

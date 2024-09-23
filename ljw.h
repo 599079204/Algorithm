@@ -96,4 +96,37 @@ bool isPrime(int value) {
     return true;
 }
 
+/**
+ * 二分查找有序数组中是否存在指定的数值. 若存在(可存在多个), 返回其下标(任意数下标均可), 否则返回-1
+ */
+int binarySearch1(int array[], int size, int value) {
+    int left = 0, right = size - 1, mid;
+    while (left <= right) {
+        mid = left + (right - left) / 2;
+        if (array[mid] == value) return mid;
+        if (array[mid] > value) right = mid - 1;
+        else left = mid + 1;
+    }
+    return -1;
+}
+
+/**
+ * 二分查找有序(升序)数组中是否存在指定的数值. 若存在, 返回该数值在数组中最右侧的下标, 否则返回-1
+ */
+int binarySearch2(int array[], int size, int value) {
+    int left = 0, right = size - 1, mid, answer = -1;
+    while (left <= right) {
+        mid = left + (right - left) / 2;
+        if (array[mid] == value) {
+            answer = mid;
+            left = mid + 1;
+        } else if (array[mid] < value) {
+            left = mid + 1;
+        } else {
+            right = mid - 1;
+        }
+    }
+    return answer;
+}
+
 #endif //ZUOSHEN_LJW_H

@@ -7,3 +7,4 @@ add_executable(main main.cpp)
 
 add_executable(practice_4 practice_4.cpp)
 add_executable(practice_6 practice_6.cpp)
+add_executable(test test.cpp)
