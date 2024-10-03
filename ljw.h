@@ -79,7 +79,11 @@ void printArray(int array[], int size, int w = 0, int lineCount = 30) {
 void generateArrayData(int array[], int size,
                        bool print = false, int minV = 0, int maxV = 99) {
     int modV = maxV - minV + 1;
-    for (int i = 0; i < size; ++i) array[i] = minV + random.randInt() % modV;
+    for (int i = 0; i < size; ++i) {
+        int randInt = random.randInt();
+        if (randInt < 0) randInt = -randInt;
+        array[i] = minV + randInt % modV;
+    }
     if (print) printArray(array, size);
 }
 
@@ -128,5 +132,36 @@ int binarySearch2(int array[], int size, int value) {
     }
     return answer;
 }
+
+class MyNode {
+public:
+    int val;
+    MyNode *next;
+    MyNode *pre;
+    MyNode(int val, MyNode *next) {
+        this->val = val;
+        this->next = next;
+    }
+
+    static MyNode *build(int array[], int size) {
+        MyNode *head = new MyNode(array[0], nullptr), *curr = head;
+        for (int i = 1; i < size; ++i) {
+            MyNode *node = new MyNode(array[i], nullptr);
+            curr->next = node;
+            curr = node;
+        }
+        return head;
+    }
+
+    void print1() {
+        MyNode *curr = this;
+        while (curr != nullptr) {
+            cout << curr->val;
+            if (curr->next != nullptr) cout << " -> ";
+            curr = curr->next;
+        }
+        cout << " -> nullptr";
+    }
+};
 
 #endif //ZUOSHEN_LJW_H
